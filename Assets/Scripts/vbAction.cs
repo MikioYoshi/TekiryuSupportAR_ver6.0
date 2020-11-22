@@ -12,6 +12,8 @@ public class vbAction : MonoBehaviour, IVirtualButtonEventHandler
     //カラースフィアー
     public GameObject colorSphere;
 
+    public GameObject colorCylinder;
+
     //ページ数
     public GameObject pageNm;
 
@@ -49,7 +51,7 @@ public class vbAction : MonoBehaviour, IVirtualButtonEventHandler
     private string[] howTo_2 = { "上向き", "横向き", "横向き", "下向き" };
 
     //キューブのマテリアルをシリアライズ化
-    [SerializeField] Material[] materials = null;
+    [SerializeField] Material[] sph_materials = null;
 
     private int colorNm = 0;
     private int countNm = 0;
@@ -70,10 +72,11 @@ public class vbAction : MonoBehaviour, IVirtualButtonEventHandler
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
 
-        colorNm = (colorNm + 1) % materials.Length;
+        colorNm = (colorNm + 1) % sph_materials.Length;
+
 
         //ColorSphereのマテリアルを変える
-        colorSphere.GetComponent<Renderer>().material = materials[colorNm];
+        colorSphere.GetComponent<Renderer>().material = sph_materials[colorNm];
 
         if (countNm < 3)
         {
@@ -85,6 +88,7 @@ public class vbAction : MonoBehaviour, IVirtualButtonEventHandler
         }
 
         //countNmに対応してそれぞれのページのテキスト、イラストに差し替える
+
         pluckImg_1.sprite = howToImg_1[countNm];
         pluckImg_2.sprite = howToImg_2[countNm];
         howToText_1.GetComponent<Text>().text = $"一段に残す粒数[{grainNm[countNm]}]";
