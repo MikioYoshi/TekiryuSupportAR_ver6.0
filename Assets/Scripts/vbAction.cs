@@ -12,19 +12,17 @@ public class vbAction : MonoBehaviour, IVirtualButtonEventHandler
     //カラースフィアー
     public GameObject colorSphere;
 
-    public GameObject colorCylinder;
-
     //ページ数
-    public GameObject pageNm;
+    private GameObject pageNm;
 
     //残す粒数を示すテキスト
-    public GameObject howToText_1;
+    private GameObject howToText_1;
 
     //摘粒説明文_1
-    public GameObject howToText_2;
+    private GameObject howToText_2;
 
     //摘粒説明文_2
-    public GameObject howToText_3;
+    private GameObject howToText_3;
 
     //摘粒対象の粒のイラストの配置場所
     public UnityEngine.UI.Image pluckImg_1;
@@ -61,6 +59,11 @@ public class vbAction : MonoBehaviour, IVirtualButtonEventHandler
     {
         vbBtnObj = GameObject.Find("VbBtn");
         vbBtnObj.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
+
+        this.pageNm = GameObject.Find("PageNm");
+        this.howToText_1 = GameObject.Find("HowToText_1");
+        this.howToText_2 = GameObject.Find("HowToText_2");
+        this.howToText_3 = GameObject.Find("HowToText_3");
     }
 
     // Update is called once per frame
